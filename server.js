@@ -33,6 +33,7 @@ app.use(
       cb(new Error(`CORS: origin ${origin} no permitido`));
     },
     methods: ["GET", "POST"],
+    credentials: true,
   })
 );
 app.use(express.json());
@@ -85,9 +86,10 @@ const io = new Server(server, {
       cb(new Error(`Socket.IO CORS: origin ${origin} no permitido`));
     },
     methods: ["GET", "POST"],
+    credentials: true,
   },
   connectionStateRecovery: {
-    maxDisconnectionDuration: 2 * 60 * 1000, // 2 minutos
+    maxDisconnectionDuration: 2 * 60 * 1000,
     skipMiddlewares: true,
   },
 });
